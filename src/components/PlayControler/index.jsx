@@ -6,7 +6,7 @@ function PlayControl() {
     <div className="d-flex play-control justify-content-between">
       <div className="d-flex">
         <div className="cd">
-          <img src="https://picsum.photos/45" alt="" />
+          <img height={45} width={45} src="https://picsum.photos/45" alt="" />
         </div>
         <div className="title d-flex justify-content-center flex-column align-items-start">
           <p className="mb-0">Tên bài hát</p>
