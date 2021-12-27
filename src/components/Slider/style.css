@@ -1,0 +1,38 @@
+.slick-slider {
+  overflow: hidden;
+}
+
+.slick-slider img:focus-visible {
+  outline: none;
+  border: none;
+}
+
+.slick-slide {
+  padding: 10px;
+}
+
+.slick-slide img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.slick-dots {
+  position: absolute;
+  top: 10px;
+  bottom: unset;
+  text-align: right;
+  right: 15px;
+}
+
+.slick-dots li button:before {
+  font-size: 8px;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 0.75;
+  color: #fff;
+}
+
+.slick-dots li {
+  margin: 0;
+}

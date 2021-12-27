@@ -7,7 +7,7 @@
 .play-control {
   border-top: 1px solid #efefef;
   border-bottom: 1px solid #efefef;
-  padding: 7px 0;
+  padding: 7px 5px;
 }
 
 .play-control .title {
@@ -17,4 +17,12 @@
 
 .play-control .title .sub {
   color: #666;
+}
+
+.control-song ion-icon {
+  font-size: 25px;
+}
+
+.control-song > div {
+  padding: 0 10px;
 }

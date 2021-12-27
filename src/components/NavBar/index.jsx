@@ -1,13 +1,7 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container } from "react-bootstrap";
+import { Link, NavLink } from "react-router-dom";
 import PlayControl from "../PlayControler";
-import {
-  MusicNoteIcon,
-  PlayIcon,
-  ChartBarIcon,
-  RssIcon,
-  NewspaperIcon,
-} from "@heroicons/react/outline";
 import "./style.css";
 
 function Navbar() {
@@ -15,27 +9,38 @@ function Navbar() {
     <Container className="nav-bar">
       <PlayControl />
       <div className="d-flex nav-bar-link">
-        <Col className="active">
-          <MusicNoteIcon className="navbar-icon" />
-          Cá Nhân
-        </Col>
-        <Col>
-          <PlayIcon className="navbar-icon" />
-          Khám phá
-        </Col>
-        <Col>
-          <ChartBarIcon className="navbar-icon" />
-          #zingchart
-        </Col>
-
-        <Col>
-          <RssIcon className="navbar-icon" />
-          Radio
-        </Col>
-        <Col>
-          <NewspaperIcon className="navbar-icon" />
-          Theo dõi
-        </Col>
+        <NavLink to="/profile">
+          <Col>
+            <ion-icon name="musical-notes-outline"></ion-icon>
+            Cá Nhân
+          </Col>
+        </NavLink>
+        <NavLink to="/">
+          <Col>
+            <ion-icon name="disc-outline"></ion-icon>
+            Khám phá
+          </Col>
+        </NavLink>
+        <NavLink to="/zingchart">
+          {" "}
+          <Col>
+            <ion-icon name="stats-chart-outline"></ion-icon>
+            #zingchart
+          </Col>
+        </NavLink>
+        <NavLink to="/radio">
+          <Col>
+            <ion-icon name="radio-outline"></ion-icon>
+            Radio
+          </Col>
+        </NavLink>
+        <NavLink to="/newfeed">
+          {" "}
+          <Col>
+            <ion-icon name="newspaper-outline"></ion-icon>
+            Theo dõi
+          </Col>
+        </NavLink>
       </div>
     </Container>
   );

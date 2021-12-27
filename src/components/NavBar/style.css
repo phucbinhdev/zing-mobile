@@ -2,16 +2,10 @@
   text-align: center;
   color: #666;
   font-size: 12px;
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  padding: 5px 0;
+  padding: 0 0 5px !important;
   background-color: #fff;
-}
-
-.navbar-icon {
-  height: 25px;
-  display: block;
-  margin: auto;
 }
 
 .nav-bar .active {
@@ -19,5 +13,18 @@
 }
 
 .nav-bar-link {
-  padding: 10px 0 0;
+  padding: 10px 10px 0;
+  justify-content: space-between;
+}
+
+.nav-bar-link ion-icon {
+  font-size: 25px;
+  display: block;
+  margin: auto;
+}
+
+.nav-bar-link a {
+  display: block;
+  color: #666;
+  text-decoration: none;
 }

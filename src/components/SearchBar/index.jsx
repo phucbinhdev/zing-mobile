@@ -1,5 +1,4 @@
 import React from "react";
-import { SearchIcon } from "@heroicons/react/outline";
 import "./style.css";
 
 function Searchbar() {
@@ -11,7 +10,7 @@ function Searchbar() {
         id=""
         placeholder="Bài hát, playlish, nghệ sĩ,..."
       />
-      <SearchIcon className="text-secondary font" />
+      <ion-icon name="search-outline"></ion-icon>
     </div>
   );
 }

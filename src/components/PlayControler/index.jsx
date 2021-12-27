@@ -14,9 +14,15 @@ function PlayControl() {
         </div>
       </div>
       <div className="control-song d-flex align-items-center">
-        <div>tim</div>
-        <div>play</div>
-        <div>next</div>
+        <div>
+          <ion-icon name="heart-outline"></ion-icon>
+        </div>
+        <div>
+          <ion-icon name="play-sharp"></ion-icon>
+        </div>
+        <div>
+          <ion-icon name="play-skip-forward-sharp"></ion-icon>
+        </div>
       </div>
     </div>
   );
