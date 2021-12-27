@@ -1,0 +1,19 @@
+.nav-bar {
+  text-align: center;
+  color: #666;
+  font-size: 12px;
+  position: absolute;
+  bottom: 0;
+  padding: 5px 0;
+  background-color: #fff;
+}
+
+.navbar-icon {
+  height: 25px;
+  display: block;
+  margin: auto;
+}
+
+.nav-bar .active {
+  color: #8c4ee1;
+}
