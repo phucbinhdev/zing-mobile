@@ -17,3 +17,7 @@
 .nav-bar .active {
   color: #8c4ee1;
 }
+
+.nav-bar-link {
+  padding: 10px 0 0;
+}

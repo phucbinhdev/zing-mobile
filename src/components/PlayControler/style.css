@@ -1,0 +1,20 @@
+.cd img {
+  width: 100%;
+  float: left;
+  border-radius: 50px;
+}
+
+.play-control {
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  padding: 7px 0;
+}
+
+.play-control .title {
+  margin-left: 10px;
+  color: #111;
+}
+
+.play-control .title .sub {
+  color: #666;
+}

@@ -14,7 +14,7 @@ function Navbar() {
   return (
     <Container className="nav-bar">
       <PlayControl />
-      <div className="d-flex">
+      <div className="d-flex nav-bar-link">
         <Col className="active">
           <MusicNoteIcon className="navbar-icon" />
           Cá Nhân
