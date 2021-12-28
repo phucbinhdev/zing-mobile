@@ -6,9 +6,11 @@ function PlaylistItem(props) {
 
   return (
     <div className="playlist-item">
-      <img src={thumnailW300} alt="" />
-      <ion-icon name="play-circle"></ion-icon>
-      <p className="title">{name}</p>
+      <div className="thumnail-box">
+        <img height="150px" width="150px" src={thumnailW300} alt="" />
+        <ion-icon name="play-circle"></ion-icon>
+      </div>
+      <p className="title mb-0">{name}</p>
     </div>
   );
 }
