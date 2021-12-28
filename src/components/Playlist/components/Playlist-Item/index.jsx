@@ -1,14 +1,14 @@
 import React from "react";
 
-function PlaylistItem() {
+function PlaylistItem(props) {
+  let { name, thumbnail } = props.data;
+  const thumnailW300 = thumbnail.replace("w94", "w200");
+
   return (
     <div className="playlist-item">
-      <img
-        src="https://photo-resize-zmp3.zadn.vn/w240_r1x1_jpeg/cover/8/e/f/4/8ef45dd9a76426895bc8117a10136f4b.jpg"
-        alt=""
-      />
+      <img src={thumnailW300} alt="" />
       <ion-icon name="play-circle"></ion-icon>
-      <p className="title">Cà phê cùng Indie Việt</p>
+      <p className="title">{name}</p>
     </div>
   );
 }
