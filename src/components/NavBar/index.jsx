@@ -6,7 +6,7 @@ import "./style.css";
 
 function Navbar() {
   return (
-    <Container className="nav-bar">
+    <div className="nav-bar">
       <PlayControl />
       <div className="d-flex nav-bar-link">
         <NavLink to="/profile">
@@ -42,7 +42,7 @@ function Navbar() {
           </Col>
         </NavLink>
       </div>
-    </Container>
+    </div>
   );
 }
 

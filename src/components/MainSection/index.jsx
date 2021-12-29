@@ -8,7 +8,7 @@ import Zingchart from "../../pages/Zingchart";
 
 function MainSection() {
   return (
-    <div>
+    <div style={{ paddingBottom: "110px" }}>
       {" "}
       {/* main */}
       <Routes>

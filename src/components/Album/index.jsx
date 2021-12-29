@@ -1,34 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row } from "react-bootstrap";
+import MusicApi from "../../api/MusicApi";
 import AlbumItem from "./components/AlbumItem";
 import "./style.scss";
 
-function Album(props) {
-  //   const thumnails = items.slice(0,5)
+function Album({ keyAlbum = "kncnTzddNZCGtHtDHLnyLCFHhJSNCk " }) {
+  const [Albums, setAlbums] = useState([]);
 
-  console.log(props);
+  useEffect(() => {
+    const fetchSong = async () => {
+      const albums = await MusicApi.getAlbum(keyAlbum);
+      setAlbums(albums);
+    };
+
+    fetchSong();
+  }, []);
 
   return (
-    <div className="album-list">
-      {/* <div className="album-header">
+    <div
+      className="album-list p-2 mb-2"
+      style={{
+        backgroundImage: `url(${Albums?.info?.thumbnail})`,
+      }}
+    >
+      <div className="album-header">
         <div className="album-avatar">
-          <img
-            src="https://photo-resize-zmp3.zadn.vn/w165_r1x1_jpeg/cover/8/e/f/4/8ef45dd9a76426895bc8117a10136f4b.jpg"
-            alt=""
-          />
+          <img src={Albums?.info?.thumbnail} alt="" />
+          <ion-icon name="shuffle-outline"></ion-icon>
         </div>
         <div className="title-section">
-          <p className="mb-1">jksjhfd</p>
-          <p className="mb-0">50 bài hảt</p>
+          <p className="mb-0">{Albums?.info?.title}</p>
+          <p className="mb-0 sub">{Albums?.items?.length} bài hát</p>
         </div>
       </div>
       <div className="album-body">
-        <AlbumItem />
-        <AlbumItem />
-        <AlbumItem />
-        <AlbumItem />
-        <AlbumItem />
-      </div> */}
+        {Albums?.items?.slice(0, 5).map((v, i) => {
+          return <AlbumItem thumbnail={v.thumbnail} key={v.id} />;
+        })}
+      </div>
     </div>
   );
 }
