@@ -1,6 +1,7 @@
 .album-list::after {
   content: "";
   backdrop-filter: blur(50px);
+  -webkit-backdrop-filter: blur(50px);
   position: absolute;
   width: 100%;
   height: 100%;
