@@ -1,0 +1,33 @@
+.zingchart-page {
+  background-color: #37075d;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 50px;
+  color: #fff;
+
+  & .title {
+    align-items: center;
+
+    & h1 {
+      font-size: 40px;
+      margin-bottom: 0;
+    }
+
+    & ion-icon {
+      background-color: #ed2b91;
+      padding: 10px;
+      border-radius: 50%;
+      margin-left: 10px;
+      font-size: 20px;
+    }
+  }
+
+  & .loadmore {
+    display: block;
+    width: max-content;
+    border-radius: 20px;
+    border: 1px solid #fff;
+    margin: 0 auto;
+    padding: 5px 20px;
+  }
+}

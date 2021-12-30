@@ -1,0 +1,56 @@
+.zingchart-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding-left: 15px;
+  margin-bottom: 10px;
+}
+
+.songInfo {
+  width: 100%;
+  display: flex;
+  margin-left: 15px;
+
+  & .thumbnail {
+    width: 50px;
+    margin-right: 10px;
+  }
+
+  & .thumbnail img {
+    width: 100%;
+  }
+}
+
+.number {
+  -webkit-text-stroke: 1px #fff;
+  color: transparent;
+  line-height: 4rem;
+  font-weight: 900;
+  font-size: 3.2em;
+  margin-right: 10px;
+  width: 50px;
+  text-align: center;
+}
+
+.zingchart-item:nth-of-type(1) .number {
+  -webkit-text-stroke: 1px #4a90e2;
+}
+
+.zingchart-item:nth-of-type(2) .number {
+  -webkit-text-stroke: 1px #50e3c2;
+}
+
+.zingchart-item:nth-of-type(3) .number {
+  -webkit-text-stroke: 1px #e35050;
+}
+
+.song-title p {
+  margin-bottom: 0;
+  font-size: 1.2em;
+}
+.song-name {
+  font-weight: 600;
+}
+.song-artist {
+  color: #ffffff80;
+}

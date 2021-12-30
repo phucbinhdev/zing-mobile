@@ -4,7 +4,9 @@
   margin-bottom: 10px;
   border-radius: 10px;
   font-weight: 600;
+  background-color: rgba(255, 255, 255, 0.16);
   width: 49%;
+  font-size: 1rem;
 
   & ion-icon {
     background-image: linear-gradient(180deg, #0093e9 58%, #28aefc 100%);
@@ -14,6 +16,12 @@
     margin-bottom: 3px;
     color: #fff;
   }
+}
+
+.profile {
+  padding-top: 100px;
+  background-color: #37075d;
+  color: #fff;
 }
 
 .profile .row {

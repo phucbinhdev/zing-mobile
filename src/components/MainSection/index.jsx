@@ -17,18 +17,6 @@ function MainSection() {
         <Route path="/zingchart" element={<Zingchart />} />
         <Route path="/radio" element={<Radio />} />
         <Route path="/newfeed" element={<Newfeed />} />
-        {/* <Route path="/homepage">
-          <Homepage />
-        </Route>
-        <Route path="/zingchart">
-          <Zingchart />
-        </Route>
-        <Route path="/radio">
-          <Radio />
-        </Route>
-        <Route path="/newfeed">
-          <Newfeed />
-        </Route> */}
       </Routes>
     </div>
   );

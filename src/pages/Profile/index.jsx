@@ -6,7 +6,7 @@ import "./style.scss";
 
 function Profile() {
   return (
-    <Container className="p-2 profile">
+    <Container className="profile">
       <section className="mt-2 mb-3">
         <h2>Thư viện</h2>
         <Row>
@@ -34,38 +34,6 @@ function Profile() {
             </div>
             Album
           </div>
-          {/* <Col xs={6} className="p-0">
-            <div className="bcard">
-              <div className="icon">
-                <ion-icon name="albums"></ion-icon>
-              </div>
-              Bài hát
-            </div>
-          </Col>
-          <Col xs={6} className="p-0">
-            <div className="bcard">
-              <div className="icon">
-                <ion-icon name="albums"></ion-icon>
-              </div>
-              Bài hát
-            </div>
-          </Col>{" "}
-          <Col xs={6} className="p-0">
-            <div className="bcard">
-              <div className="icon">
-                <ion-icon name="albums"></ion-icon>
-              </div>
-              Bài hát
-            </div>
-          </Col>{" "}
-          <Col xs={6} className="p-0">
-            <div className="bcard">
-              <div className="icon">
-                <ion-icon name="albums"></ion-icon>
-              </div>
-              Bài hát
-            </div>
-          </Col> */}
         </Row>
       </section>
 

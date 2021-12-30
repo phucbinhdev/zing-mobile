@@ -3,9 +3,13 @@ import { Container } from "react-bootstrap";
 import MusicApi from "../../api/MusicApi";
 import Playlist from "../../components/Playlist";
 import SliderSection from "../../components/Slider";
+import "./style.scss";
+
+// import defaultBg from "./default-bg.png";
 
 function Homepage() {
   const [songList, setSongList] = useState([]);
+  // const [background, setBackground] = useState([]);
 
   useEffect(() => {
     const fetchSong = async () => {
@@ -26,8 +30,15 @@ function Homepage() {
   const playlist7 = songList.slice(60, 69);
   const playlist8 = songList.slice(70, 79);
 
+  const background = songList[0]?.thumbnail;
+
   return (
-    <Container className="p-0">
+    <Container
+      className="p-0 homepage"
+      style={{
+        backgroundImage: `url(${background})`,
+      }}
+    >
       <SliderSection />
       <Playlist songList={playlist1} title="Gần đây" />
       <Playlist songList={playlist2} title="Có thể bạn muốn nghe" />

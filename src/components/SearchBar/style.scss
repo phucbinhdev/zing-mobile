@@ -1,15 +1,21 @@
 .search-bar {
-  background-color: #efefef;
+  background-color: rgb(255 253 253 / 17%);
   border-radius: 35px;
-  height: 30px;
+  height: 40px;
   justify-content: space-between;
   padding: 0 5px 0 10px;
   width: calc(100% - 35px);
   margin-left: 5px;
   align-items: center;
+  font-size: 15px;
+  color: #fff;
 
-  &ion-icon {
-    font-size: 20px;
+  & ::placeholder {
+    color: #fff;
+  }
+
+  & ion-icon {
+    font-size: 30px !important;
   }
 }
 
@@ -17,4 +23,5 @@
   background-color: transparent;
   border: none;
   width: 100%;
+  color: #fff;
 }
