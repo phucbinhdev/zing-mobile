@@ -18,7 +18,7 @@ function Album({ keyAlbum = "kncnTzddNZCGtHtDHLnyLCFHhJSNCk " }) {
 
   return (
     <div
-      className="album-list p-2 mb-2"
+      className="album-list p-2 mb-3"
       style={{
         backgroundImage: `url(${Albums?.info?.thumbnail})`,
       }}
