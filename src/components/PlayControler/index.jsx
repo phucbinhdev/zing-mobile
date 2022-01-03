@@ -1,9 +1,24 @@
-import React from "react";
-import "./style.css";
+import React, { useState } from "react";
+import TimeSlider from "./components/TimeSlider";
+import "./style.scss";
 
 function PlayControl() {
+  const [isPlay, setPlay] = useState(false);
+  const [firstSong, setFirstSong] = useState("abc");
+
+  function handleClickPausePlay() {
+    setPlay(!isPlay);
+  }
+
+  function hanleSetPlayState(playStatus) {
+    setPlay(playStatus);
+  }
+
+  console.log(isPlay);
+
   return (
     <div className="d-flex play-control justify-content-between">
+      <TimeSlider playStatus={isPlay} hanleSetPlayState={hanleSetPlayState} />
       <div className="d-flex">
         <div className="cd">
           <img height={45} width={45} src="https://picsum.photos/45" alt="" />
@@ -17,8 +32,12 @@ function PlayControl() {
         <div>
           <ion-icon name="heart-outline"></ion-icon>
         </div>
-        <div>
-          <ion-icon name="play-sharp"></ion-icon>
+        <div onClick={handleClickPausePlay}>
+          {isPlay ? (
+            <ion-icon name="pause-sharp"></ion-icon>
+          ) : (
+            <ion-icon name="play-sharp"></ion-icon>
+          )}
         </div>
         <div>
           <ion-icon name="play-skip-forward-sharp"></ion-icon>

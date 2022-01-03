@@ -1,0 +1,57 @@
+.cd img {
+  width: 100%;
+  float: left;
+  border-radius: 50px;
+}
+
+.play-control {
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+  padding: 7px 5px;
+}
+
+.play-control .title {
+  margin-left: 10px;
+  color: #111;
+}
+
+.play-control .title .sub {
+  color: #666;
+}
+
+.control-song ion-icon {
+  font-size: 25px;
+}
+
+.control-song > div {
+  padding: 0 10px;
+}
+
+.play-control {
+  position: relative;
+
+  & .timeslider {
+    position: absolute;
+    top: -1px;
+    left: 0;
+    width: 100%;
+  }
+
+  // Thanh slider
+  & .css-yvszuv-Slider {
+    width: 100%;
+    height: 2px;
+  }
+
+  //active
+  & .css-1ldz52l-Slider {
+    width: 5px;
+    height: 5px;
+    background-color: #8c4ee1;
+  }
+
+  & .css-3g5hux-Slider {
+    background-color: #8c4ee1;
+  }
+}
+/* time slider */
