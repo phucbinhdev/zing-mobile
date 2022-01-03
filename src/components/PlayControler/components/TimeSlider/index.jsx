@@ -57,7 +57,7 @@ function TimeSlider({ srcSong, playStatus, hanleSetPlayState }) {
       />
       <audio
         ref={audioRef}
-        src={srcSong[128]}
+        src={srcSong ? srcSong : null}
         onLoadedData={handleLoadedData}
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
         onEnded={() => hanleSetPlayState(false)}
