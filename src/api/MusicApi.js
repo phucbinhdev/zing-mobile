@@ -17,6 +17,12 @@ const MusicApi = {
     const url = `media/get-source?type=album&key=${id}`;
     return AxiosClient.get(url);
   },
+
+  getDetalSong(id = "kmJHTZHNCVaSmSuymyFHLH") {
+    // LnxHyZGadciHJzitGTbHZnTLhzGXRaLkm
+    const url = `media/get-source?type=audio&key=${id}`;
+    return AxiosClient.get(url);
+  },
 };
 
 export default MusicApi;

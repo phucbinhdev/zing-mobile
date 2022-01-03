@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-input-slider";
 
-function TimeSlider({ playStatus, hanleSetPlayState }) {
+function TimeSlider({ srcSong, playStatus, hanleSetPlayState }) {
   const audioRef = useRef();
   //   const [audioIndex, setAudioIndex] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -16,8 +16,6 @@ function TimeSlider({ playStatus, hanleSetPlayState }) {
     } else {
       audioRef.current.play();
     }
-
-    console.log("chilrenSTT", playStatus);
   }, [playStatus]);
 
   const handleLoadedData = () => {
@@ -44,6 +42,8 @@ function TimeSlider({ playStatus, hanleSetPlayState }) {
     }
   };
 
+  //   console.log("src", srcSong[128]);
+
   return (
     <>
       <Slider
@@ -57,7 +57,7 @@ function TimeSlider({ playStatus, hanleSetPlayState }) {
       />
       <audio
         ref={audioRef}
-        src="https://mp3-s1-zmp3.zadn.vn/e7e000cc268dcfd3969c/2172183184086830160?authen=exp=1641359791~acl=/e7e000cc268dcfd3969c/*~hmac=a9c269e4f0cefce8fb4d49f340ca74cd&fs=MTY0MTE4Njk5MTU5Nnx3ZWJWNnwxMDEyMzQ3OTYyfDE3MS4yMjQdUngMTmUsIC5LjIyNA"
+        src={srcSong[128]}
         onLoadedData={handleLoadedData}
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
         onEnded={() => hanleSetPlayState(false)}
