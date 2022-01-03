@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Slider from "react-input-slider";
 
 function TimeSlider({ srcSong, playStatus, hanleSetPlayState }) {
+  console.log("src", srcSong);
   const audioRef = useRef();
   //   const [audioIndex, setAudioIndex] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
@@ -57,7 +58,7 @@ function TimeSlider({ srcSong, playStatus, hanleSetPlayState }) {
       />
       <audio
         ref={audioRef}
-        src={srcSong ? srcSong : null}
+        src={srcSong ? srcSong["128"] : null}
         onLoadedData={handleLoadedData}
         onTimeUpdate={() => setCurrentTime(audioRef.current.currentTime)}
         onEnded={() => hanleSetPlayState(false)}
