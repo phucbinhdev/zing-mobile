@@ -23,6 +23,12 @@ const MusicApi = {
     const url = `media/get-source?type=audio&key=${id}`;
     return AxiosClient.get(url);
   },
+
+  testapi() {
+    // LnxHyZGadciHJzitGTbHZnTLhzGXRaLkm
+    const url = `https://music-player-pink.vercel.app/api/song?id=ZUUUEEIE`;
+    return AxiosClient.get(url);
+  },
 };
 
 export default MusicApi;
