@@ -16,6 +16,7 @@ function Homepage() {
       const songList = await MusicApi.getZingChart();
       console.log(songList);
       setSongList(songList.song);
+      localStorage.setItem("songList", JSON.stringify(songList.song));
     };
 
     fetchSong();

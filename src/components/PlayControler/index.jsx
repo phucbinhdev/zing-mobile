@@ -6,19 +6,61 @@ import "./style.scss";
 function PlayControl({ firstSongID = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
   const [isPlay, setPlay] = useState(false);
   const [songInfo, setSongInfo] = useState();
+  const [songStorage, setSongStorage] = useState(() => {
+    const songListStorageJSON = localStorage.getItem("songList");
+    return JSON.parse(songListStorageJSON);
+  });
+  const [currentSongid, setCurrentSongid] = useState(
+    () => localStorage.getItem("currentID") ?? firstSongID
+  );
 
+  const fetchSong = async () => {
+    const songData = await MusicApi.getDetailSong(currentSongid);
+    setSongInfo(songData);
+    // console.log(songInfo);
+  };
+
+  // useEffect(() => {
+  //   const fetchSongList = async () => {
+  //     const songListData = await MusicApi.getZingChart();
+  //     if (songListData) {
+  //       setSongList(songListData.song);
+  //       setCurrentSongid(songList[0]?.code);
+  //     }
+  //   };
+
+  //   fetchSongList();
+  // }, []);
+
+  //Lấy một bài hát để phát
   useEffect(() => {
-    const fetchFirstSong = async () => {
-      const songData = await MusicApi.getDetalSong(firstSongID);
-      setSongInfo(songData);
-      console.log(songInfo);
-    };
-
-    fetchFirstSong();
+    fetchSong();
+    // console.log("chạy lần đầu");
   }, []);
+
+  //Lấy bài hát theo id để phát
+  useEffect(() => {
+    fetchSong();
+    // console.log("Chạy khi đổi id");
+  }, [currentSongid]);
 
   function handleClickPausePlay() {
     setPlay(!isPlay);
+  }
+
+  function handleClickSkipSong() {
+    const songLocalStorage = JSON.parse(localStorage.getItem("songList"));
+
+    // console.log("local", songLocalStorage);
+    let currentIndex = songLocalStorage.findIndex(
+      (song) => song.name === songInfo?.name
+    );
+    // currentIndex++;
+    // console.log("currentIndex", currentIndex);
+
+    //Id đổi thì tự động lấy bài mới
+    setCurrentSongid(songStorage[++currentIndex]?.code);
+    localStorage.setItem("currentID", songStorage[currentIndex]?.code);
   }
 
   function hanleSetPlayState(playStatus) {
@@ -30,6 +72,7 @@ function PlayControl({ firstSongID = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
       <TimeSlider
         playStatus={isPlay}
         hanleSetPlayState={hanleSetPlayState}
+        nextSong={handleClickSkipSong}
         srcSong={songInfo?.source}
       />
       <div className="d-flex">
@@ -52,7 +95,7 @@ function PlayControl({ firstSongID = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
             <ion-icon name="play-sharp"></ion-icon>
           )}
         </div>
-        <div>
+        <div onClick={handleClickSkipSong}>
           <ion-icon name="play-skip-forward-sharp"></ion-icon>
         </div>
       </div>

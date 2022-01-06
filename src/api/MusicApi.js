@@ -18,15 +18,9 @@ const MusicApi = {
     return AxiosClient.get(url);
   },
 
-  getDetalSong(id = "kmJHTZHNCVaSmSuymyFHLH") {
+  getDetailSong(code = "kmJHTZHNCVaSmSuymyFHLH") {
     // LnxHyZGadciHJzitGTbHZnTLhzGXRaLkm
-    const url = `media/get-source?type=audio&key=${id}`;
-    return AxiosClient.get(url);
-  },
-
-  testapi() {
-    // LnxHyZGadciHJzitGTbHZnTLhzGXRaLkm
-    const url = `https://music-player-pink.vercel.app/api/song?id=ZUUUEEIE`;
+    const url = `media/get-source?type=audio&key=${code}`;
     return AxiosClient.get(url);
   },
 };
