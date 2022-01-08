@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import MusicApi from "../../api/MusicApi";
+import { useSelector } from "react-redux";
 import Playlist from "../../components/Playlist";
 import SliderSection from "../../components/Slider";
 import "./style.scss";
@@ -9,18 +9,13 @@ import "./style.scss";
 
 function Homepage() {
   const [songList, setSongList] = useState([]);
-  // const [background, setBackground] = useState([]);
+
+  //Use Redux
+  const songListRedux = useSelector((state) => state.songList);
 
   useEffect(() => {
-    const fetchSong = async () => {
-      const songList = await MusicApi.getZingChart();
-      console.log(songList);
-      setSongList(songList.song);
-      localStorage.setItem("songList", JSON.stringify(songList.song));
-    };
-
-    fetchSong();
-  }, []);
+    if (songListRedux) setSongList(songListRedux);
+  }, [songListRedux]);
 
   const playlist1 = songList.slice(0, 9);
   const playlist2 = songList.slice(10, 19);
@@ -46,7 +41,7 @@ function Homepage() {
       <Playlist songList={playlist3} title="Lựa chọn hôm nay" />
       <Playlist songList={playlist4} title="Nhạc mới mỗi ngày" />
       <Playlist songList={playlist5} title="Mới phát hành" />
-      <Playlist songList={playlist6} />
+      <Playlist songList={playlist6} title="Gợi ý cho bạn" />
       <Playlist songList={playlist7} />
       <Playlist songList={playlist8} />
     </Container>

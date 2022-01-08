@@ -1,47 +1,43 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import MusicApi from "../../api/MusicApi";
+import { setSongRedux } from "./bxhSlice";
 import TimeSlider from "./components/TimeSlider";
 import "./style.scss";
 
 function PlayControl({ firstSongID = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
   const [isPlay, setPlay] = useState(false);
   const [songInfo, setSongInfo] = useState();
-  const [songStorage, setSongStorage] = useState(() => {
-    const songListStorageJSON = localStorage.getItem("songList");
-    return JSON.parse(songListStorageJSON);
-  });
+
+  //Use Redux
+  const dispatch = useDispatch();
+  const songListRedux = useSelector((state) => state.songList);
+
   const [currentSongid, setCurrentSongid] = useState(
     () => localStorage.getItem("currentID") ?? firstSongID
   );
 
-  const fetchSong = async () => {
-    const songData = await MusicApi.getDetailSong(currentSongid);
-    setSongInfo(songData);
-    // console.log(songInfo);
-  };
-
-  // useEffect(() => {
-  //   const fetchSongList = async () => {
-  //     const songListData = await MusicApi.getZingChart();
-  //     if (songListData) {
-  //       setSongList(songListData.song);
-  //       setCurrentSongid(songList[0]?.code);
-  //     }
-  //   };
-
-  //   fetchSongList();
-  // }, []);
-
-  //Lấy một bài hát để phát
+  //Lấy danh sách bài hát lưu vào redux
   useEffect(() => {
+    const fetchSong = async () => {
+      const songList = await MusicApi.getZingChart();
+
+      //set redux state
+      const setSongAction = setSongRedux(songList);
+      dispatch(setSongAction);
+    };
+
     fetchSong();
-    // console.log("chạy lần đầu");
   }, []);
 
   //Lấy bài hát theo id để phát
   useEffect(() => {
-    fetchSong();
-    // console.log("Chạy khi đổi id");
+    const fetchDetailSong = async () => {
+      const songData = await MusicApi.getDetailSong(currentSongid);
+      setSongInfo(songData);
+    };
+
+    fetchDetailSong();
   }, [currentSongid]);
 
   function handleClickPausePlay() {
@@ -49,18 +45,13 @@ function PlayControl({ firstSongID = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
   }
 
   function handleClickSkipSong() {
-    const songLocalStorage = JSON.parse(localStorage.getItem("songList"));
-
-    // console.log("local", songLocalStorage);
-    let currentIndex = songLocalStorage.findIndex(
+    let currentIndex = songListRedux.findIndex(
       (song) => song.name === songInfo?.name
     );
-    // currentIndex++;
-    // console.log("currentIndex", currentIndex);
 
     //Id đổi thì tự động lấy bài mới
-    setCurrentSongid(songStorage[++currentIndex]?.code);
-    localStorage.setItem("currentID", songStorage[currentIndex]?.code);
+    setCurrentSongid(songListRedux[++currentIndex]?.code);
+    localStorage.setItem("currentID", songListRedux[currentIndex]?.code);
   }
 
   function hanleSetPlayState(playStatus) {
