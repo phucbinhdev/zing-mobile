@@ -1,5 +1,26 @@
 .topbar {
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(100px);
   -webkit-backdrop-filter: blur(30px);
   padding: 10px 5px;
+}
+
+.result-item {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  // background-color: cadetblue;
+  border-bottom: 0.5px solid rgb(255 255 255 / 16%);
+
+  & ion-icon {
+    font-size: 20px;
+    display: inline;
+    margin-right: 10px;
+  }
+}
+
+.result-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }

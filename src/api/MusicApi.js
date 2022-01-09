@@ -1,9 +1,18 @@
 import AxiosClient from "./ClientApi";
 
 const MusicApi = {
-  getAll(params) {
-    const url = "";
-    return AxiosClient.get(url);
+  // getAll(params) {
+  //   const url = "";
+  //   return AxiosClient.get(url);
+  // },
+
+  searchSong(params) {
+    const baseURL = "https://ac.mp3.zing.vn/";
+
+    const url = `complete?type=song&query=${params}`;
+    return AxiosClient.get(url, {
+      baseURL,
+    });
   },
 
   getZingChart(params) {

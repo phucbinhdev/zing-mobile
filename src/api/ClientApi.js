@@ -3,6 +3,7 @@ import axios from "axios";
 const AxiosClient = axios.create({
   // baseURL: "https://music-player-pink.vercel.app/api/song?id=ZUUUEEIE",
   baseURL: "https://mp3.zing.vn/xhr/",
+  Headers: "Allow-Control-Allow-Origin: *",
 });
 
 // Add a request interceptor
