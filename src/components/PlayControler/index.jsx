@@ -40,6 +40,7 @@ function PlayControl({ idSong = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
     const fetchDetailSong = async () => {
       const songData = await MusicApi.getDetailSong(currentSongid);
       setSongInfo(songData);
+      if (isPlay === false) setPlay(true);
     };
 
     fetchDetailSong();
