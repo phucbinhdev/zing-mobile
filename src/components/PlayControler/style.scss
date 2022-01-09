@@ -13,10 +13,14 @@
 .play-control .title {
   margin-left: 10px;
   color: #111;
+  width: 168px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .play-control .title .sub {
   color: #666;
+  white-space: nowrap;
 }
 
 .control-song ion-icon {

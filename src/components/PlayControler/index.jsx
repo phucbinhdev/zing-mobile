@@ -5,17 +5,22 @@ import { setSongRedux } from "./bxhSlice";
 import TimeSlider from "./components/TimeSlider";
 import "./style.scss";
 
-function PlayControl({ firstSongID = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
+function PlayControl({ idSong = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
   const [isPlay, setPlay] = useState(false);
   const [songInfo, setSongInfo] = useState();
 
   //Use Redux
   const dispatch = useDispatch();
   const songListRedux = useSelector((state) => state.songList);
+  const playingSongId = useSelector((state) => state.playingSong);
 
   const [currentSongid, setCurrentSongid] = useState(
-    () => localStorage.getItem("currentID") ?? firstSongID
+    () => localStorage.getItem("currentID") ?? idSong
   );
+
+  useEffect(() => {
+    if (playingSongId) setCurrentSongid(playingSongId);
+  }, [playingSongId]);
 
   //Lấy danh sách bài hát lưu vào redux
   useEffect(() => {
