@@ -4,11 +4,15 @@ import { useSelector } from "react-redux";
 import Playlist from "../../components/Playlist";
 import SliderSection from "../../components/Slider";
 import "./style.scss";
+import MusicApi from "../../api/MusicApi";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 // import defaultBg from "./default-bg.png";
 
 function Homepage() {
   const [songList, setSongList] = useState([]);
+  const [banners, setBanners] = useState([]);
 
   //Use Redux
   const songListRedux = useSelector((state) => state.songList);
@@ -16,6 +20,16 @@ function Homepage() {
   useEffect(() => {
     if (songListRedux) setSongList(songListRedux);
   }, [songListRedux]);
+
+  //Lấy dữ liệu trang homepage
+  useEffect(() => {
+    const fetchSong = async () => {
+      const homepageData = await MusicApi.getHomePage();
+      setBanners(homepageData?.items[0]?.items);
+    };
+
+    fetchSong();
+  }, []);
 
   const playlist1 = songList.slice(0, 9);
   const playlist2 = songList.slice(10, 19);
@@ -26,16 +40,23 @@ function Homepage() {
   const playlist7 = songList.slice(60, 69);
   const playlist8 = songList.slice(70, 79);
 
-  const background = songList[0]?.thumbnail;
+  // const background = songList[0]?.thumbnail;
 
   return (
     <Container
       className="p-0 homepage"
-      style={{
-        backgroundImage: `url(${background})`,
-      }}
+      // style={{
+      //   backgroundImage: `url(${background})`,
+      // }}
     >
-      <SliderSection />
+      {banners.length > 0 ? (
+        <SliderSection banners={banners} />
+      ) : (
+        <div style={{ padding: "10px" }}>
+          <Skeleton height={200} borderRadius={10} />
+        </div>
+      )}
+
       <Playlist songList={playlist1} title="Gần đây" />
       <Playlist songList={playlist2} title="Có thể bạn muốn nghe" />
       <Playlist songList={playlist3} title="Lựa chọn hôm nay" />

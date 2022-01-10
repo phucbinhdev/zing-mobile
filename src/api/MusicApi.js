@@ -1,15 +1,18 @@
 import AxiosClient from "./ClientApi";
 
 const MusicApi = {
-  // getAll(params) {
-  //   const url = "";
-  //   return AxiosClient.get(url);
-  // },
+  getHomePage(params) {
+    const baseURL = "https://music-player-pink.vercel.app/api/";
+    const url = `home?page=1`;
+    return AxiosClient.get(url, {
+      baseURL,
+    });
+  },
 
   searchSong(params) {
-    const baseURL = "https://ac.mp3.zing.vn/";
+    const baseURL = "https://music-player-pink.vercel.app/api/";
 
-    const url = `complete?type=song&query=${params}`;
+    const url = `search?keyword=${params}`;
     return AxiosClient.get(url, {
       baseURL,
     });

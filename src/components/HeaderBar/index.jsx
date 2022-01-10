@@ -7,19 +7,17 @@ import SearchResult from "./components/SearchResult";
 import "./style.scss";
 
 function HeaderBar() {
-  const [isOpen, setOpen] = useState(true);
   const [searchSong, setSearchSong] = useState([]);
 
   const HandleSearchSong = (keySearch) => {
     if (keySearch !== "") {
       const fetchSearchSong = async () => {
         const songData = await MusicApi.searchSong(keySearch);
-        setSearchSong(songData[0].song);
+        setSearchSong(songData.songs);
         // songData[0].song.map((song) => console.log(song.name));
       };
 
       fetchSearchSong();
-      setOpen(true);
     } else {
       setSearchSong([]);
     }
@@ -32,13 +30,13 @@ function HeaderBar() {
         zIndex: 99,
         backdropFilter: 1,
       }}
-      onBlur={() => setOpen(false)}
+      // onBlur={() => setOpen(false)}
     >
       <div className="d-flex">
         <Avatar />
-        <Searchbar handleOnChange={HandleSearchSong} />
+        <Searchbar searchSongFn={HandleSearchSong} />
       </div>
-      <SearchResult isOpen={isOpen} result={searchSong} />
+      <SearchResult result={searchSong} />
     </Container>
   );
 }

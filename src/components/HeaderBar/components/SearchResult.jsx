@@ -1,19 +1,12 @@
 import React from "react";
-
 import SearchResultItem from "./SearchResultItem";
 
-function SearchResult({ result, isOpen }) {
-  console.log("isopen", isOpen);
-
-  if (!isOpen) {
-    result = [];
-  }
-
+function SearchResult({ result }) {
   if (result) {
     return (
       <div className="w-100">
         {result.map((song) => (
-          <SearchResultItem key={song.id} result={song} />
+          <SearchResultItem key={song.endcodeId} result={song} />
         ))}
       </div>
     );

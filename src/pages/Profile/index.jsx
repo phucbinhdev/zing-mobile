@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import MusicApi from "../../api/MusicApi";
+import React from "react";
+import { Container, Row } from "react-bootstrap";
 import Album from "../../components/Album";
 import "./style.scss";
 

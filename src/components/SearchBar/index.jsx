@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./style.scss";
 
-function Searchbar({ handleOnChange }) {
+function Searchbar({ searchSongFn }) {
   const [keyword, setkeyword] = useState("");
 
-  useEffect(() => {
-    handleOnChange(keyword);
-  }, [keyword]);
+  //Search khi user nhan enter
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      searchSongFn(keyword);
+    }
+  };
+
+  //Chạy hàm search ở comp cha
+  // useEffect(() => {
+  //   handleOnChange(keyword);
+  // }, [keyword]);
 
   return (
     <div className="search-bar d-flex">
@@ -15,8 +23,20 @@ function Searchbar({ handleOnChange }) {
         value={keyword}
         placeholder="Bài hát, playlish, nghệ sĩ,..."
         onChange={(event) => setkeyword(event.target.value)}
+        onKeyDown={handleKeyDown}
       />
-      <ion-icon name="search-outline"></ion-icon>
+
+      {keyword ? (
+        <ion-icon
+          onClick={() => {
+            searchSongFn("");
+            setkeyword("");
+          }}
+          name="close-circle-outline"
+        ></ion-icon>
+      ) : (
+        <ion-icon name="search-outline"></ion-icon>
+      )}
     </div>
   );
 }

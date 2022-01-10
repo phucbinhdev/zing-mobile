@@ -1,6 +1,6 @@
 import React from "react";
-import { Col, Container } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Col } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import PlayControl from "../PlayControler";
 import "./style.css";
 
