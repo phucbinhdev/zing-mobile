@@ -1,9 +1,18 @@
 import React from "react";
 import "./style.scss";
+import { setPlayingSong } from "../PlayControler/playSongSlice";
+import { useDispatch } from "react-redux";
 
 function MusicItem({ data }) {
+  const dispatch = useDispatch();
+  const handlePlayMusic = (idSong) => {
+    console.log(idSong);
+    const action = setPlayingSong(idSong);
+    dispatch(action);
+  };
+
   return (
-    <div className="zingchart-item">
+    <div className="zingchart-item" onClick={() => handlePlayMusic(data.code)}>
       <div className="number">{data?.position}</div>
       <ion-icon name="remove-outline"></ion-icon>
       <div className="songInfo">

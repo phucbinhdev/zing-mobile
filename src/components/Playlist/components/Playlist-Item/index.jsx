@@ -4,7 +4,8 @@ import { setPlayingSong } from "../../../PlayControler/playSongSlice";
 
 function PlaylistItem(props) {
   let { name, thumbnail, code } = props.data;
-  const thumnailW300 = thumbnail.replace("w94", "w200");
+
+  const thumnailW300 = thumbnail.replace("w94", "w250");
 
   const dispatch = useDispatch();
 
@@ -14,7 +15,7 @@ function PlaylistItem(props) {
   };
 
   return (
-    <div className="playlist-item" onClick={() => handlePlayMusic({ code })}>
+    <div className="playlist-item" onClick={() => handlePlayMusic(code)}>
       <div className="thumnail-box">
         <img height="150px" width="150px" src={thumnailW300} alt="" />
         <ion-icon name="play-circle"></ion-icon>

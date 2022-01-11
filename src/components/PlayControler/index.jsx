@@ -2,25 +2,29 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import MusicApi from "../../api/MusicApi";
 import { setSongRedux } from "./bxhSlice";
+import { setPlayingSong } from "./playSongSlice";
 import TimeSlider from "./components/TimeSlider";
 import "./style.scss";
 
 function PlayControl({ idSong = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
-  const [isPlay, setPlay] = useState(false);
   const [songInfo, setSongInfo] = useState();
+  const [isPlay, setPlay] = useState(false);
 
   //Use Redux
   const dispatch = useDispatch();
   const songListRedux = useSelector((state) => state.songList);
   const playingSongId = useSelector((state) => state.playingSong);
 
-  const [currentSongid, setCurrentSongid] = useState(
-    () => localStorage.getItem("currentID") ?? idSong
-  );
+  // useEffect(() => {
+  //   if (playingSongId) setCurrentSongid(playingSongId);
+  // }, [playingSongId]);
 
   useEffect(() => {
-    if (playingSongId) setCurrentSongid(playingSongId);
-  }, [playingSongId]);
+    const defaultSongId = localStorage.getItem("currentID");
+    console.log("defaul", defaultSongId);
+    const setPlayingSongAction = setPlayingSong(defaultSongId);
+    dispatch(setPlayingSongAction);
+  }, []);
 
   //Lấy danh sách bài hát lưu vào redux
   useEffect(() => {
@@ -38,13 +42,13 @@ function PlayControl({ idSong = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
   //Lấy bài hát theo id để phát
   useEffect(() => {
     const fetchDetailSong = async () => {
-      const songData = await MusicApi.getDetailSong(currentSongid);
+      const songData = await MusicApi.getDetailSong(playingSongId);
       setSongInfo(songData);
-      // if (isPlay === false) setPlay(true);
+      console.log("songData", songData);
+      console.log("playingsong", playingSongId);
     };
-
-    fetchDetailSong();
-  }, [currentSongid]);
+    if (playingSongId) fetchDetailSong();
+  }, [playingSongId]);
 
   function handleClickPausePlay() {
     setPlay(!isPlay);
@@ -54,10 +58,12 @@ function PlayControl({ idSong = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
     let currentIndex = songListRedux.findIndex(
       (song) => song.name === songInfo?.name
     );
+    let nextIndex = currentIndex + 1;
 
-    //Id đổi thì tự động lấy bài mới
-    setCurrentSongid(songListRedux[++currentIndex]?.code);
-    localStorage.setItem("currentID", songListRedux[currentIndex]?.code);
+    const setSongAction = setPlayingSong(songListRedux[nextIndex]?.code);
+    dispatch(setSongAction);
+    localStorage.setItem("currentID", songListRedux[nextIndex]?.code);
+    setPlay(true);
   }
 
   function hanleSetPlayState(playStatus) {

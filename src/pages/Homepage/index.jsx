@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { useSelector } from "react-redux";
+import MusicApi from "../../api/MusicApi";
 import Playlist from "../../components/Playlist";
 import SliderSection from "../../components/Slider";
 import "./style.scss";
-import MusicApi from "../../api/MusicApi";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 // import defaultBg from "./default-bg.png";
 
@@ -24,11 +24,20 @@ function Homepage() {
   //Lấy dữ liệu trang homepage
   useEffect(() => {
     const fetchSong = async () => {
+      console.log("fetch data");
       const homepageData = await MusicApi.getHomePage();
       setBanners(homepageData?.items[0]?.items);
+      const homepageJsonData = JSON.stringify(homepageData?.items[0]?.items);
+      localStorage.setItem("homepageData", homepageJsonData);
     };
 
-    fetchSong();
+    if (localStorage.getItem("homepageData")) {
+      console.log("use localstorage");
+      const homepageData = JSON.parse(localStorage.getItem("homepageData"));
+      setBanners(homepageData);
+    } else {
+      fetchSong();
+    }
   }, []);
 
   const playlist1 = songList.slice(0, 9);
@@ -53,7 +62,7 @@ function Homepage() {
         <SliderSection banners={banners} />
       ) : (
         <div style={{ padding: "10px" }}>
-          <Skeleton height={200} borderRadius={10} />
+          <Skeleton className="bannerSkeleton" borderRadius={10} />
         </div>
       )}
 

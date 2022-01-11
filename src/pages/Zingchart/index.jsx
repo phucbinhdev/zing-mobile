@@ -6,11 +6,18 @@ import "./style.scss";
 
 function Zingchart() {
   const [ZingChartList, setZingChartList] = useState([]);
+  const [zingChartLimit, setZingChartLimit] = useState(20);
   const bxhListRedux = useSelector((state) => state.songList);
 
   useEffect(() => {
     if (bxhListRedux) setZingChartList(bxhListRedux);
   }, [bxhListRedux]);
+
+  const handleMore = () => {
+    const maxLimit = 100;
+    if (zingChartLimit <= maxLimit) setZingChartLimit((prev) => prev + 20);
+    else setZingChartLimit(maxLimit);
+  };
 
   return (
     <Container className="zingchart-page">
@@ -19,11 +26,16 @@ function Zingchart() {
         <ion-icon name="play"></ion-icon>
       </div>
       <div className="zingchart-list mt-4">
-        {ZingChartList?.slice(0, 10).map((songData, index) => {
+        {ZingChartList?.slice(0, zingChartLimit).map((songData, index) => {
           return <MusicItem data={songData} key={songData.id} />;
         })}
-
-        <span className="text-center loadmore">Xem thêm</span>
+        {zingChartLimit !== 100 ? (
+          <span className="text-center loadmore" onClick={handleMore}>
+            Xem thêm
+          </span>
+        ) : (
+          ""
+        )}
       </div>
     </Container>
   );

@@ -20,7 +20,7 @@ function SliderSection({ banners = undefined }) {
   return (
     <Slider {...settings}>
       {banners.map((banner, index) => (
-        <img src={banner.banner} alt="" height="200" key={banner.encodeId} />
+        <img src={banner.banner} alt="" key={banner.encodeId} />
       ))}
     </Slider>
   );

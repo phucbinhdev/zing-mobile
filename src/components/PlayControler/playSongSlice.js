@@ -6,8 +6,8 @@ const playSongSlice = createSlice({
   initialState: "",
   reducers: {
     setPlayingSong(state, action) {
-      console.log("Đang phát id", action.payload.code);
-      return (state = action.payload.code);
+      console.log("Đang phát id", action.payload);
+      return (state = action.payload);
     },
   },
 });
