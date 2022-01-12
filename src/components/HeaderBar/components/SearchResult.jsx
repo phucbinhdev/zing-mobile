@@ -5,8 +5,8 @@ function SearchResult({ result }) {
   if (result) {
     return (
       <div className="w-100">
-        {result.map((song) => (
-          <SearchResultItem key={song.endcodeId} result={song} />
+        {result.map((song, index) => (
+          <SearchResultItem key={song.encodeId} result={song} />
         ))}
       </div>
     );

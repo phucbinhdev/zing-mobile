@@ -20,7 +20,7 @@ function PlayControl({ idSong = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
   // }, [playingSongId]);
 
   useEffect(() => {
-    const defaultSongId = localStorage.getItem("currentID");
+    const defaultSongId = localStorage.getItem("currentID") || idSong;
     console.log("defaul", defaultSongId);
     const setPlayingSongAction = setPlayingSong(defaultSongId);
     dispatch(setPlayingSongAction);
@@ -44,9 +44,10 @@ function PlayControl({ idSong = "kHxmyZkLsQnDppHymTvmZmtZhlkbZkGdW" }) {
     const fetchDetailSong = async () => {
       const songData = await MusicApi.getDetailSong(playingSongId);
       setSongInfo(songData);
-      console.log("songData", songData);
-      console.log("playingsong", playingSongId);
+      localStorage.setItem("currentID", playingSongId);
     };
+
+    //Only fetch if playingsong not undefine
     if (playingSongId) fetchDetailSong();
   }, [playingSongId]);
 

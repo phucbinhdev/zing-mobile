@@ -32,7 +32,7 @@ function Searchbar({ searchSongFn }) {
             searchSongFn("");
             setkeyword("");
           }}
-          name="close-circle-outline"
+          name="close-outline"
         ></ion-icon>
       ) : (
         <ion-icon name="search-outline"></ion-icon>
