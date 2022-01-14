@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Router, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
+import Artist from "../../pages/Artist";
 import Homepage from "../../pages/Homepage";
-import Newfeed from "../../pages/Newfeed";
+import MVPage from "../../pages/MV";
 import Profile from "../../pages/Profile";
-import Radio from "../../pages/Radio";
 import Zingchart from "../../pages/Zingchart";
 
 function MainSection() {
@@ -15,8 +15,8 @@ function MainSection() {
         <Route path="/" element={<Homepage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/zingchart" element={<Zingchart />} />
-        <Route path="/radio" element={<Radio />} />
-        <Route path="/newfeed" element={<Newfeed />} />
+        <Route path="/MV" element={<MVPage />} />
+        <Route path="/artist" element={<Artist />} />
       </Routes>
     </div>
   );

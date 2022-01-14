@@ -28,17 +28,17 @@ function Navbar() {
             #zingchart
           </Col>
         </NavLink>
-        <NavLink to="/radio">
+        <NavLink to="/MV">
           <Col>
-            <ion-icon name="radio-outline"></ion-icon>
-            Radio
+            <ion-icon name="videocam-outline"></ion-icon>
+            MV
           </Col>
         </NavLink>
-        <NavLink to="/newfeed">
+        <NavLink to="/artist">
           {" "}
           <Col>
-            <ion-icon name="newspaper-outline"></ion-icon>
-            Theo dõi
+            <ion-icon name="person-outline"></ion-icon>
+            Nghệ sĩ
           </Col>
         </NavLink>
       </div>

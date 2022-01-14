@@ -1,0 +1,40 @@
+.mv-page {
+  background-color: #37075d;
+  min-height: 100vh;
+  color: #fff;
+  padding-top: 7em;
+
+  & img.thumbnail {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+
+  & .avatar {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    flex: 0 0 30px;
+  }
+
+  .artist-name {
+    opacity: 0.6;
+  }
+
+  .info {
+    flex: 1;
+  }
+
+  .mv-title {
+    font-weight: 600;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 0;
+  }
+
+  .title {
+    width: calc(100% - 40px);
+  }
+}

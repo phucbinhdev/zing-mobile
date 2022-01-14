@@ -35,6 +35,15 @@ const MusicApi = {
     const url = `media/get-source?type=audio&key=${code}`;
     return AxiosClient.get(url);
   },
+
+  getMvList() {
+    const baseURL = "https://music-player-pink.vercel.app/api/";
+
+    const url = `listMV?id=IWZ9Z08I&page=1&count=16`;
+    return AxiosClient.get(url, {
+      baseURL,
+    });
+  },
 };
 
 export default MusicApi;
