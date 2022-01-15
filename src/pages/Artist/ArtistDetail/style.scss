@@ -1,0 +1,85 @@
+.artist-detail {
+  padding-bottom: 2em;
+
+  & .artistThumnail {
+    border-radius: 0 0 30px 30px;
+    overflow: hidden;
+    position: relative;
+
+    & .info {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      z-index: 9;
+      padding: 80px 20px 10px 20px;
+      color: #fff;
+      background: linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0) 100%
+      );
+
+      & .name-artist {
+        font-weight: 600;
+      }
+    }
+
+    & img {
+      width: 100%;
+      position: relative;
+      z-index: -1;
+    }
+  }
+
+  & .songInfo {
+    color: #111;
+    margin-left: 0;
+
+    & img {
+      border-radius: 7px;
+    }
+  }
+
+  & .song-artist {
+    color: #666;
+  }
+
+  & .song-title {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: calc(100% - 60px);
+  }
+
+  & .song-name {
+    width: 95%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & .loadmore {
+    display: block;
+    width: max-content;
+    border-radius: 20px;
+    border: 1px solid #efefef;
+    margin: 0 auto;
+    padding: 5px 20px;
+  }
+
+  & .zingchart-item {
+    margin-bottom: 15px;
+  }
+
+  & .story {
+    font-size: 14px;
+
+    & b {
+      font-weight: 600;
+    }
+  }
+}
+
+.topbar {
+  display: none;
+}

@@ -28,12 +28,12 @@ function Homepage() {
       const homepageData = await MusicApi.getHomePage();
       setBanners(homepageData?.items[0]?.items);
       const homepageJsonData = JSON.stringify(homepageData?.items[0]?.items);
-      localStorage.setItem("homepageData", homepageJsonData);
+      sessionStorage.setItem("homepageData", homepageJsonData);
     };
 
-    if (localStorage.getItem("homepageData")) {
-      console.log("use localstorage");
-      const homepageData = JSON.parse(localStorage.getItem("homepageData"));
+    if (sessionStorage.getItem("homepageData")) {
+      console.log("use sessionStorage");
+      const homepageData = JSON.parse(sessionStorage.getItem("homepageData"));
       setBanners(homepageData);
     } else {
       fetchSong();

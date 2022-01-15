@@ -44,6 +44,15 @@ const MusicApi = {
       baseURL,
     });
   },
+
+  getDetailArtist(nameArtist) {
+    const baseURL = "https://music-player-pink.vercel.app/api/";
+
+    const url = `artist?name=${nameArtist}`;
+    return AxiosClient.get(url, {
+      baseURL,
+    });
+  },
 };
 
 export default MusicApi;

@@ -1,6 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Artist from "../../pages/Artist";
+import Artist from "../../pages/Artist/index.jsx";
+import ArtistDetail from "../../pages/Artist/ArtistDetail";
 import Homepage from "../../pages/Homepage";
 import MVPage from "../../pages/MV";
 import Profile from "../../pages/Profile";
@@ -17,6 +18,7 @@ function MainSection() {
         <Route path="/zingchart" element={<Zingchart />} />
         <Route path="/MV" element={<MVPage />} />
         <Route path="/artist" element={<Artist />} />
+        <Route path="/artist/:artistName" element={<ArtistDetail />} />
       </Routes>
     </div>
   );
