@@ -3,9 +3,14 @@
   background-color: #37075d;
   color: #fff;
 
-  & img.thumbnail {
+  img.thumbnail {
     width: 100%;
     border-radius: 5px;
+  }
+
+  .artist-item {
+    color: #fff;
+    text-decoration: none;
   }
 
   .artist-name {

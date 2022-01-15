@@ -1,16 +1,14 @@
 import React from "react";
 import { Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function ArtistItem({ data }) {
-  const viewArtist = (alias) => {
-    console.log(alias);
-  };
   return (
     <Col xs={6}>
-      <div className="artist-item" onClick={() => viewArtist(data.alias)}>
+      <Link to={`${data.alias}`} className="artist-item">
         <img className="thumbnail" src={data.thumbnail} alt="" />
         <p className="artist-name">{data.name}</p>
-      </div>
+      </Link>
     </Col>
   );
 }

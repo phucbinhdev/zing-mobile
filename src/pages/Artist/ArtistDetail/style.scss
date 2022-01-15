@@ -1,10 +1,12 @@
 .artist-detail {
   padding-bottom: 2em;
+  padding-top: 4.5em;
 
   & .artistThumnail {
     border-radius: 0 0 30px 30px;
     overflow: hidden;
     position: relative;
+    aspect-ratio: 1/1;
 
     & .info {
       position: absolute;
@@ -78,8 +80,7 @@
       font-weight: 600;
     }
   }
-}
-
-.topbar {
-  display: none;
+  & .topbar {
+    display: none;
+  }
 }

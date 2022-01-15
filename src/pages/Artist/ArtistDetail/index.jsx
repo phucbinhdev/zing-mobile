@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
+import Skeleton from "react-loading-skeleton";
 import { useParams } from "react-router-dom";
 import MusicApi from "../../../api/MusicApi";
 import ArtistSong from "./components/ArtistSong";
@@ -9,15 +10,18 @@ import "./style.scss";
 function ArtistDetail() {
   const param = useParams();
   const [artist, setArtist] = useState(() => param.artistName);
+  const [isLoading, setLoading] = useState(false);
   const [artistInfo, setArtistInfo] = useState([]);
   const [songList, setSongList] = useState([]);
 
   useEffect(() => {
     const fetchArtist = async () => {
+      setLoading(true);
       const artistData = await MusicApi.getDetailArtist(artist);
       setArtistInfo(artistData);
       console.log(artistData);
       setSongList(artistData?.sections[0]?.items);
+      setLoading(false);
     };
 
     console.log("lay du lieu");
@@ -46,25 +50,42 @@ function ArtistDetail() {
       : "0";
   };
 
+  const follower = nFormatter(artistInfo?.follow, 1);
+
   return (
     <div className="artist-detail">
       <div className="artistThumnail">
-        <img src={artistInfo?.thumbnailM} alt="" />
+        {isLoading ? (
+          <Skeleton className="artistThumnail" />
+        ) : (
+          <img src={artistInfo?.thumbnailM} alt="" />
+        )}
+
         <div className="info">
-          <h1 className="name-artist">{artistInfo?.name}</h1>
+          <h1 className="name-artist">
+            {artistInfo?.name || <Skeleton width="60%" />}
+          </h1>
           <p className="follower">
-            {nFormatter(artistInfo?.follow, 1)} nguời theo dõi
+            {Number(follower) === 0 ? (
+              <Skeleton width={100} />
+            ) : (
+              follower + " người theo dõi"
+            )}{" "}
           </p>
         </div>
       </div>
       <Container className="mt-3">
-        <ArtistSong songList={songList} />
-        <AstistBio
-          bio={artistInfo?.biography}
-          realname={artistInfo?.realname}
-          birthday={artistInfo?.birthday}
-          national={artistInfo?.national}
-        />
+        <ArtistSong songList={songList} isLoading={isLoading} />
+        {!isLoading ? (
+          <AstistBio
+            bio={artistInfo?.biography}
+            realname={artistInfo?.realname}
+            birthday={artistInfo?.birthday}
+            national={artistInfo?.national}
+          />
+        ) : (
+          ""
+        )}
       </Container>
     </div>
   );

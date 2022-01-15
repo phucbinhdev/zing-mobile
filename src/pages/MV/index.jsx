@@ -10,8 +10,6 @@ function MVPage() {
   const [mvList, setMvList] = useState([]);
   const [isLoading, setLoading] = useState(false);
 
-  const skeletonArray = Array(10);
-
   //Lấy dữ liệu trang mv
   useEffect(() => {
     const fetchMV = async () => {

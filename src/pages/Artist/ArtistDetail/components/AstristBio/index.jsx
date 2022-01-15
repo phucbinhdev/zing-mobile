@@ -5,13 +5,15 @@ function AstistBio({ bio, realname, birthday, national }) {
   return (
     <section className="story">
       <h3>Thông tin</h3>
-      <p style={{ fontSize: "14px" }}>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: bio,
-          }}
-        ></div>
-      </p>
+
+      <div
+        className="mb-4"
+        style={{ fontSize: "14px" }}
+        dangerouslySetInnerHTML={{
+          __html: bio,
+        }}
+      ></div>
+
       <Row className="mb-2">
         <Col xs={4}>
           <b>Tên thật</b>
