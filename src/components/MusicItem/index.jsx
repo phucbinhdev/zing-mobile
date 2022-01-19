@@ -1,14 +1,23 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import Swal from "sweetalert2";
 import { setPlayingSong } from "../PlayControler/playSongSlice";
 import "./style.scss";
 
 function MusicItem({ data }) {
   const dispatch = useDispatch();
   const handlePlayMusic = (idSong) => {
-    console.log(idSong);
-    const action = setPlayingSong(idSong);
-    dispatch(action);
+    if (idSong) {
+      const action = setPlayingSong(idSong);
+      dispatch(action);
+    } else {
+      Swal.fire({
+        html: "Do hạn chế liên quan đến api.</br> Không thể phát nhạc ở trang này",
+        title: "Đang phát triển",
+        icon: "warning",
+        confirmButtonText: "Đóng",
+      });
+    }
   };
 
   return (

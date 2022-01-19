@@ -37,7 +37,9 @@ function MVPage() {
         {/* <MVItemSkeleton />
         <MVItemSkeleton /> */}
         {isLoading
-          ? Array.apply(null, Array(10)).map((mv) => <MVItemSkeleton />)
+          ? Array.apply(null, Array(10)).map((mv, index) => (
+              <MVItemSkeleton key={index} />
+            ))
           : mvList?.map((mv) => <MvItem key={mv.id} data={mv} />)}
       </Row>
     </Container>

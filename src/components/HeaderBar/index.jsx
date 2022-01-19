@@ -16,7 +16,8 @@ function HeaderBar() {
       setisLoading(true);
       const fetchSearchSong = async () => {
         const songData = await MusicApi.searchSong(keySearch);
-        setSearchSong(songData.songs);
+        setSearchSong(songData.songs ? songData.songs : "");
+        console.log(songData);
         setisLoading(false);
         // songData[0].song.map((song) => console.log(song.name));
       };
