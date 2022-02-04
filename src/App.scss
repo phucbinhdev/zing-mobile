@@ -1,0 +1,19 @@
+body {
+  font-size: 12px !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+input:focus-visible {
+  border: none !important;
+  outline: none;
+}
+
+.container,
+.App {
+  max-width: 720px !important;
+}
+
+.App {
+  margin: 0 auto;
+}

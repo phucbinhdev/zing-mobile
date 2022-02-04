@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
+import "./App.scss";
 import HeaderBar from "./components/HeaderBar";
 import MainSection from "./components/MainSection";
 import NavBar from "./components/NavBar";
