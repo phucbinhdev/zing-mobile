@@ -16,7 +16,7 @@ function SearchResultItem({ result }) {
     <div className="result-item" onClick={handleClick}>
       <ion-icon name="search-circle"></ion-icon>
 
-      {result.title}
+      {result.name_music}
     </div>
   );
 }

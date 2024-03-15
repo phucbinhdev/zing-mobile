@@ -28,7 +28,7 @@ function Navbar() {
             #zingchart
           </Col>
         </NavLink>
-        <NavLink to="/MV">
+        {/* <NavLink to="/MV">
           <Col>
             <ion-icon name="videocam-outline"></ion-icon>
             MV
@@ -40,7 +40,7 @@ function Navbar() {
             <ion-icon name="person-outline"></ion-icon>
             Nghệ sĩ
           </Col>
-        </NavLink>
+        </NavLink> */}
       </div>
     </div>
   );

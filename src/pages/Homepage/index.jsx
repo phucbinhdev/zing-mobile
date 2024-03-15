@@ -3,16 +3,13 @@ import { Container } from "react-bootstrap";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useSelector } from "react-redux";
-import MusicApi from "../../api/MusicApi";
 import Playlist from "../../components/Playlist";
 import SliderSection from "../../components/Slider";
 import "./style.scss";
-
-// import defaultBg from "./default-bg.png";
+import { banners } from "../../data/banner";
 
 function Homepage() {
   const [songList, setSongList] = useState([]);
-  const [banners, setBanners] = useState([]);
 
   //Use Redux
   const songListRedux = useSelector((state) => state.songList);
@@ -20,25 +17,6 @@ function Homepage() {
   useEffect(() => {
     if (songListRedux) setSongList(songListRedux);
   }, [songListRedux]);
-
-  //Lấy dữ liệu trang homepage
-  useEffect(() => {
-    const fetchSong = async () => {
-      console.log("fetch data");
-      const homepageData = await MusicApi.getHomePage();
-      setBanners(homepageData?.items[0]?.items);
-      const homepageJsonData = JSON.stringify(homepageData?.items[0]?.items);
-      sessionStorage.setItem("homepageData", homepageJsonData);
-    };
-
-    if (sessionStorage.getItem("homepageData")) {
-      console.log("use sessionStorage");
-      const homepageData = JSON.parse(sessionStorage.getItem("homepageData"));
-      setBanners(homepageData);
-    } else {
-      fetchSong();
-    }
-  }, []);
 
   const playlist1 = songList.slice(0, 9);
   const playlist2 = songList.slice(10, 19);
@@ -52,12 +30,7 @@ function Homepage() {
   // const background = songList[0]?.thumbnail;
 
   return (
-    <Container
-      className="p-0 homepage"
-      // style={{
-      //   backgroundImage: `url(${background})`,
-      // }}
-    >
+    <Container className="p-0 homepage">
       {banners.length > 0 ? (
         <SliderSection banners={banners} />
       ) : (

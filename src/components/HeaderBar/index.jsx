@@ -11,18 +11,15 @@ function HeaderBar() {
   const [searchSong, setSearchSong] = useState([]);
   const [isLoading, setisLoading] = useState(false);
 
-  const HandleSearchSong = (keySearch) => {
+  const HandleSearchSong = async (keySearch) => {
     if (keySearch !== "") {
-      setisLoading(true);
-      const fetchSearchSong = async () => {
-        const songData = await MusicApi.searchSong(keySearch);
-        setSearchSong(songData.songs ? songData.songs : "");
-        console.log(songData);
+      try {
+        setisLoading(true);
+        const res = await MusicApi.searchSong(keySearch);
+        setSearchSong(res);
+      } finally {
         setisLoading(false);
-        // songData[0].song.map((song) => console.log(song.name));
-      };
-
-      fetchSearchSong();
+      }
     } else {
       setSearchSong([]);
     }
@@ -37,6 +34,7 @@ function HeaderBar() {
       }}
       // onBlur={() => setOpen(false)}
     >
+      tao ne{searchSong?.length}
       <div className="d-flex">
         <Avatar />
         <Searchbar searchSongFn={HandleSearchSong} />

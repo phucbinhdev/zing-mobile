@@ -2,11 +2,12 @@ import React from "react";
 import SearchResultItem from "./SearchResultItem";
 
 function SearchResult({ result }) {
+  console.log("ressulte", result);
   if (result) {
     return (
       <div className="w-100">
         {result.map((song, index) => (
-          <SearchResultItem key={song.encodeId} result={song} />
+          <SearchResultItem key={song._id} result={song} />
         ))}
       </div>
     );

@@ -1,29 +1,29 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "./style.scss";
+import { debounce } from "lodash";
 
 function Searchbar({ searchSongFn }) {
   const [keyword, setkeyword] = useState("");
 
-  //Search khi user nhan enter
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
+  const debounceSearch = useCallback(
+    debounce((keyword) => {
+      console.log("keyword", keyword);
       searchSongFn(keyword);
-    }
-  };
-
-  //Chạy hàm search ở comp cha
-  // useEffect(() => {
-  //   handleOnChange(keyword);
-  // }, [keyword]);
+    }, 300),
+    []
+  );
 
   return (
     <div className="search-bar d-flex">
       <input
         type="text"
         value={keyword}
-        placeholder="Bài hát, playlish, nghệ sĩ,..."
-        onChange={(event) => setkeyword(event.target.value)}
-        onKeyDown={handleKeyDown}
+        placeholder="Bài hát, playlist, nghệ sĩ,..."
+        onChange={(event) => {
+          const keyword = event.target.value;
+          setkeyword(keyword);
+          debounceSearch(keyword);
+        }}
       />
 
       {keyword ? (

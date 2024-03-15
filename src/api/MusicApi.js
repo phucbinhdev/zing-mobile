@@ -10,9 +10,8 @@ const MusicApi = {
   },
 
   searchSong(params) {
-    const baseURL = "https://music-player-pink.vercel.app/api/";
-
-    const url = `search?keyword=${params}`;
+    const baseURL = `https://api-kaito-music.vercel.app/api/`;
+    const url = `search/?query=${params}&limit=10`;
     return AxiosClient.get(url, {
       baseURL,
     });
