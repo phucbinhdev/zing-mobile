@@ -34,7 +34,6 @@ function HeaderBar() {
       }}
       // onBlur={() => setOpen(false)}
     >
-      tao ne{searchSong?.length}
       <div className="d-flex">
         <Avatar />
         <Searchbar searchSongFn={HandleSearchSong} />
